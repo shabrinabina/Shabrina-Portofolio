@@ -507,3 +507,63 @@ h2 { font: 600 clamp(38px, 5vw, 62px)/1.12 var(--serif); letter-spacing: -2px; m
     transition: none;
   }
 }
+
+/* =================================
+   PDF / PRINT VERSION
+================================= */
+
+@media print {
+
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  html, body {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide navigation */
+  .nav,
+  .menu-toggle,
+  .back-to-top {
+    display: none !important;
+  }
+
+  /* Prevent horizontal overflow */
+  * {
+    box-sizing: border-box !important;
+  }
+
+  /* Avoid cutting content */
+  section,
+  .card,
+  .project-card,
+  .experience-card,
+  .paper-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Remove unnecessary animation */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Make images fit */
+  img {
+    max-width: 100% !important;
+    break-inside: avoid;
+  }
+
+  /* Remove sticky elements */
+  header {
+    position: static !important;
+  }
+}
